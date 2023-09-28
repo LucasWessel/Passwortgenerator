@@ -1,3 +1,5 @@
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -10,11 +12,11 @@ public class Main {
         boolean validInput = false;
 
         while (!validInput) {
-            String input = JOptionPane.showInputDialog("Gib die Lange ein:");
+            String input = JOptionPane.showInputDialog("Gib die Länge ein:");
             try {
                 pslang = Integer.parseInt(input);
                 if (pslang < psmin || pslang > psmax) {
-                    JOptionPane.showMessageDialog(null, "Die Passwort lange muss zwischen 4 und 30 liegen");
+                    JOptionPane.showMessageDialog(null, "Die Passwort Länge muss zwischen 4 und 30 liegen");
                 } else {
                     validInput = true;
                 }
@@ -24,6 +26,9 @@ public class Main {
         }
         String password = Passwort_gen(pslang);
         JOptionPane.showMessageDialog(null, "Dein Passwort ist: " + password);
+        StringSelection selection = new StringSelection(password);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+        JOptionPane.showMessageDialog(null, "Das Passwort wurde in die Zwischenablage kopiert.");
     }
 
 
