@@ -9,6 +9,7 @@ public class main {
         Scanner scanner = new Scanner(System.in);
         int pslang;
         boolean validInput = false;
+
         while (!validInput) {
             System.out.print("Gib die Lange ein: ");
             try {
