@@ -1,2 +1,2 @@
 # Passwortgenerator
-Ein Passwort gererator einfach aus Spaß erstellt :)
+Ein Passwort generator einfach aus Spaß erstellt :)
