@@ -7,7 +7,7 @@ public class main {
         int psmin=4;
         int psmax=30;
         Scanner scanner = new Scanner(System.in);
-        int pslang;
+        int pslang = 0;
         boolean validInput = false;
 
         while (!validInput) {
@@ -23,23 +23,28 @@ public class main {
                 System.out.println ("Bitte gib eine Zahl ein");
             }
         }
-        System.out.printf("Dein Passwort: "+"///retun von Methode///");
+        System.out.println("Dein Passwort ist: ");
+        System.out.println(Passwort_gen(pslang));
     }
 
 
 
     public static String Passwort_gen(int pslang) {
-
+        StringBuilder fpassw = new StringBuilder();
         Random random =new Random();
         String able = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=[]{}|:;<>,.?/~'´";
+        for (int i = 0; i < pslang; i++) {
+            int index = random.nextInt(able.length());
+            char symbol = able.charAt(index);
+            fpassw.append(symbol);
+        }
+
+        return fpassw.toString();
 
 
 
 
-        StringBuilder fpassw = new StringBuilder();
 
-
-        return null;
     }
 
 }
