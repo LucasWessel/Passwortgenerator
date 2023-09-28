@@ -1,30 +1,29 @@
 import java.util.Random;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         int psmin=4;
         int psmax=30;
-        Scanner scanner = new Scanner(System.in);
         int pslang = 0;
         boolean validInput = false;
 
         while (!validInput) {
-            System.out.print("Gib die Lange ein: ");
+            String input = JOptionPane.showInputDialog("Gib die Lange ein:");
             try {
-                pslang = Integer.parseInt(scanner.nextLine());
+                pslang = Integer.parseInt(input);
                 if (pslang < psmin || pslang > psmax) {
-                    System.out.println("Die Passwort lange muss zwischen 4 und 30 liegen");
+                    JOptionPane.showMessageDialog(null, "Die Passwort lange muss zwischen 4 und 30 liegen");
                 } else {
                     validInput = true;
                 }
             } catch (NumberFormatException e) {
-                System.out.println ("Bitte gib eine Zahl ein");
+                JOptionPane.showMessageDialog(null, "Bitte gib eine Zahl ein");
             }
         }
-        System.out.println("Dein Passwort ist: ");
-        System.out.println(Passwort_gen(pslang));
+        String password = Passwort_gen(pslang);
+        JOptionPane.showMessageDialog(null, "Dein Passwort ist: " + password);
     }
 
 
@@ -40,10 +39,6 @@ public class main {
         }
 
         return fpassw.toString();
-
-
-
-
 
     }
 
