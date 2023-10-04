@@ -12,26 +12,26 @@ public class Main {
         boolean validInput = false;
 
         while (!validInput) {
-            String input = JOptionPane.showInputDialog("Gib die Länge ein:");
+            String input = JOptionPane.showInputDialog("Wie lang soll dein Passwort sein?\n(Mindestens " + psmin + " und maximal " + psmax );
+            if(input == null) {
+                System.exit(0);
+            }
             try {
                 pslang = Integer.parseInt(input);
                 if (pslang < psmin || pslang > psmax) {
-                    JOptionPane.showMessageDialog(null, "Die Passwort Länge muss zwischen 4 und 30 liegen");
+                    JOptionPane.showMessageDialog(null, "Bitte gib eine Zahl zwischen " + psmin + " und " + psmax + " ein.");
                 } else {
                     validInput = true;
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Bitte gib eine Zahl ein");
+                JOptionPane.showMessageDialog(null, "Bitte gib eine gültige Zahl ein.");
             }
         }
         String password = Passwort_gen(pslang);
-        JOptionPane.showMessageDialog(null, "Dein Passwort ist: " + password);
+        JOptionPane.showMessageDialog(null, "Dein generiertes Passwort ist :\n" + password + "\n Es wurde automatisch in die Zwischenablage kopiert.");
         StringSelection selection = new StringSelection(password);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
-        JOptionPane.showMessageDialog(null, "Das Passwort wurde in die Zwischenablage kopiert.");
     }
-
-
 
     public static String Passwort_gen(int pslang) {
         StringBuilder fpassw = new StringBuilder();
